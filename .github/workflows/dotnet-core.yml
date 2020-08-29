@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      DisplayName: "Build Console Project"
+      #DisplayName: "Build Console Project"
       run: dotnet build --configuration Release --no-restore
     #- name: Test
      # run: dotnet test --no-restore --verbosity normal
