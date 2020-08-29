@@ -20,3 +20,6 @@ obj/Debug/netcoreapp3.1/SeleniunNetCoreConsoleApp.csproj.FileListAbsolute.txt
 obj/Debug/netcoreapp3.1/SeleniunNetCoreConsoleApp.dll
 obj/Debug/netcoreapp3.1/SeleniunNetCoreConsoleApp.genruntimeconfig.cache
 obj/Debug/netcoreapp3.1/SeleniunNetCoreConsoleApp.pdb
+bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+bin/Debug/netcoreapp3.1/WebDriver.dll
+obj/Debug/netcoreapp3.1/SeleniunNetCoreConsoleApp.csproj.CopyComplete
