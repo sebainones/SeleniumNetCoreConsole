@@ -17,11 +17,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build ./SeleniunNetCoreConsoleApp.csproj
-      #DisplayName: "Build Console Project"
-      #run: dotnet build ./SeleniunNetCoreConsoleApp.sln --configuration Release --no-restore           
+    - name: Install dependencies 
+      run: dotnet restore ./SeleniunNetCoreConsoleApp.csproj
+    - name: Build      
+      run: dotnet build ./SeleniunNetCoreConsoleApp.csproj --configuration Release --no-restore      
+      #run: dotnet build ./SeleniunNetCoreConsoleApp.sln --configuration Release --no-restore                 
     #- name: Test
      # run: dotnet test --no-restore --verbosity normal
