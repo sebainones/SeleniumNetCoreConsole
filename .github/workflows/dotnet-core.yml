@@ -20,7 +20,8 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
+      run: dotnet build ./SeleniunNetCoreConsoleApp.csproj
       #DisplayName: "Build Console Project"
-      run: dotnet build ./SeleniunNetCoreConsoleApp.sln --configuration Release --no-restore           
+      #run: dotnet build ./SeleniunNetCoreConsoleApp.sln --configuration Release --no-restore           
     #- name: Test
      # run: dotnet test --no-restore --verbosity normal
