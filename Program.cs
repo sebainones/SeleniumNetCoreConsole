@@ -2,7 +2,9 @@
 using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using SeleniunNetCoreConsoleApp.PageRepository;
+using SeleniunNetCoreConsoleApp.Utils;
 
 namespace SeleniunNetCoreConsoleApp
 {
@@ -12,39 +14,46 @@ namespace SeleniunNetCoreConsoleApp
         {
             Console.WriteLine("Hello RPA with Selenium!");
             
-            ChromeDriver driver = null;
+            RemoteWebDriver driver = null;
 
-            try 
+            try
             {
-                 driver = new ChromeDriver(@"/home/sebainones/Utils/");
+                driver = DriversFactory.GetDriver("Chrome");
 
                 driver.Navigate().GoToUrl("https://duckduckgo.com/");
 
-                var searchBox =  driver.FindElementById(DuckDuckGoHomePage.SearchBoxId);
-                if(searchBox != null)
+                var searchBox = driver.FindElementById(DuckDuckGoHomePage.SearchBoxId);
+                if (searchBox != null)
                 {
                     searchBox.SendKeys("Sebastian Inones");
 
                     var searchButon = driver.FindElementById(DuckDuckGoHomePage.SearchButtonId);
-                    searchButon.Click();                    
+                    searchButon.Click();
 
                     var actualLinkReult = driver.FindElement(By.LinkText(DuckDuckGoHomePage.StackOverFlowLinkText));
-                    if(actualLinkReult != null)
+                    if (actualLinkReult != null)
                     {
+                        //Ex.: Your buisness logic in here!
+                        Console.WriteLine("StackOveflow profile found!");
                         actualLinkReult.Click();
-                    }                    
+                    }
                 }
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
             }
             finally
             {
                 if(driver != null)
-                    driver.Close();
+                {
+                    driver.Quit();
+
+                }
+                    
             }
     
         }
+        
     }
 }
