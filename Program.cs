@@ -33,6 +33,7 @@ namespace SeleniunNetCoreConsoleApp
                     var actualLinkReult = driver.FindElement(By.LinkText(DuckDuckGoHomePage.StackOverFlowLinkText));
                     if (actualLinkReult != null)
                     {
+                        //Ex.: Your buisness logic in here!
                         Console.WriteLine("StackOveflow profile found!");
                         actualLinkReult.Click();
                     }
@@ -45,7 +46,11 @@ namespace SeleniunNetCoreConsoleApp
             finally
             {
                 if(driver != null)
-                    driver.Close();
+                {
+                    driver.Quit();
+
+                }
+                    
             }
     
         }
