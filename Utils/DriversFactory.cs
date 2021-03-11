@@ -9,19 +9,16 @@ namespace SeleniunNetCoreConsoleApp.Utils
         //TODO: Add Dictionary or Enum with Drivers!
         public static RemoteWebDriver GetDriver(string driver)
         {
-            if(driver == "Chrome")
+            if (driver == "Chrome")
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 //chromeOptions.AddArgument("--headless");
 
-                bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-                if (isWindows)
-                    return new ChromeDriver(@"C:\Utils\", chromeOptions);
-                else //Linux
-                    return new ChromeDriver(@"/home/sebainones/Utils/", chromeOptions);
-
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    return new ChromeDriver(chromeOptions);
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    return new ChromeDriver(chromeOptions);
             }
-                
             return null;
         }
     }
