@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using SeleniunNetCoreConsoleApp.PageRepository;
 using SeleniunNetCoreConsoleApp.Utils;
@@ -15,7 +13,6 @@ namespace SeleniunNetCoreConsoleApp
             Console.WriteLine("Hello RPA with Selenium!");
             
             RemoteWebDriver driver = null;
-
             try
             {
                 driver = DriversFactory.GetDriver("Chrome");
@@ -28,7 +25,7 @@ namespace SeleniunNetCoreConsoleApp
                     searchBox.SendKeys("Sebastian Inones");
 
                     var searchButon = driver.FindElementById(DuckDuckGoHomePage.SearchButtonId);
-                    searchButon.Click();
+                    searchButon?.Click();
 
                     var actualLinkReult = driver.FindElement(By.LinkText(DuckDuckGoHomePage.StackOverFlowLinkText));
                     if (actualLinkReult != null)
@@ -36,6 +33,7 @@ namespace SeleniunNetCoreConsoleApp
                         //Ex.: Your buisness logic in here!
                         Console.WriteLine("StackOveflow profile found!");
                         actualLinkReult.Click();
+                        System.Threading.Thread.Sleep(3000);    
                     }
                 }
             }
@@ -45,15 +43,8 @@ namespace SeleniunNetCoreConsoleApp
             }
             finally
             {
-                if(driver != null)
-                {
-                    driver.Quit();
-
-                }
-                    
-            }
-    
-        }
-        
+                driver?.Quit();                               
+            }    
+        }        
     }
 }

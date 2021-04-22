@@ -1,5 +1,6 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
+using System;
 using System.Runtime.InteropServices;
 
 namespace SeleniunNetCoreConsoleApp.Utils
@@ -15,9 +16,15 @@ namespace SeleniunNetCoreConsoleApp.Utils
                 //chromeOptions.AddArgument("--headless");
 
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    Console.WriteLine("I'm on Windowsss");
                     return new ChromeDriver(chromeOptions);
+                }                    
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Console.WriteLine("I'm on Linuxxx");
                     return new ChromeDriver(chromeOptions);
+                }                    
             }
             return null;
         }
