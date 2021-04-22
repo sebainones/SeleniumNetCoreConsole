@@ -15,9 +15,10 @@ namespace SeleniunNetCoreConsoleApp
             RemoteWebDriver driver = null;
             try
             {
-                driver = DriversFactory.GetDriver("Chrome");
+                driver = DriversFactory.GetDriver(DriversFactory.Driver.Chrome);
 
                 driver.Navigate().GoToUrl("https://duckduckgo.com/");
+                System.Threading.Thread.Sleep(2000);    
 
                 var searchBox = driver.FindElementById(DuckDuckGoHomePage.SearchBoxId);
                 if (searchBox != null)
@@ -25,7 +26,9 @@ namespace SeleniunNetCoreConsoleApp
                     searchBox.SendKeys("Sebastian Inones");
 
                     var searchButon = driver.FindElementById(DuckDuckGoHomePage.SearchButtonId);
+                    System.Threading.Thread.Sleep(1000);    
                     searchButon?.Click();
+                    System.Threading.Thread.Sleep(2000);    
 
                     var actualLinkReult = driver.FindElement(By.LinkText(DuckDuckGoHomePage.StackOverFlowLinkText));
                     if (actualLinkReult != null)
@@ -33,7 +36,7 @@ namespace SeleniunNetCoreConsoleApp
                         //Ex.: Your buisness logic in here!
                         Console.WriteLine("StackOveflow profile found!");
                         actualLinkReult.Click();
-                        System.Threading.Thread.Sleep(3000);    
+                        System.Threading.Thread.Sleep(2000);    
                     }
                 }
             }

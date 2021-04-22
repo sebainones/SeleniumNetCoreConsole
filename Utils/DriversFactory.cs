@@ -7,10 +7,9 @@ namespace SeleniunNetCoreConsoleApp.Utils
 {
     public static class DriversFactory
     {
-        //TODO: Add Dictionary or Enum with Drivers!
-        public static RemoteWebDriver GetDriver(string driver)
+        public static RemoteWebDriver GetDriver(Driver driver)
         {
-            if (driver == "Chrome")
+            if (driver == Driver.Chrome)
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 //chromeOptions.AddArgument("--headless");
@@ -19,14 +18,19 @@ namespace SeleniunNetCoreConsoleApp.Utils
                 {
                     Console.WriteLine("I'm on Windowsss");
                     return new ChromeDriver(chromeOptions);
-                }                    
+                }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
                     Console.WriteLine("I'm on Linuxxx");
                     return new ChromeDriver(chromeOptions);
-                }                    
+                }
             }
             return null;
+        }
+        public enum Driver
+        {
+            Chrome,
+            Explorer
         }
     }
 }
